@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art & Serre - Architectes de Végétation</title>
+    <meta name="description" content="Transformez vos ambitions végétales en réalités durables. Art & Serre, architectes de végétation depuis 1953.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --emerald: #10b981;
+            --dark: #0a0a0a;
+            --dark-lighter: #1a1a1a;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Smooth scrolling and animations */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            background: var(--gold);
+            transform: scale(1.1);
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 1rem;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 2rem;
+            padding: 0.5rem;
+        }
+
+        .nav-item {
+            padding: 0.75rem 1.5rem;
+            border-radius: 1.5rem;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item.active,
+        .nav-item:hover {
+            background: var(--white);
+            color: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        .menu-button {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 2rem;
+            padding: 0.75rem 1rem;
+            color: var(--white);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .menu-button:hover {
+            background: var(--white);
+            color: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('public/hero-greenhouse.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 500px;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 400px;
+        }
+
+        .hero-cta {
+            background: linear-gradient(135deg, var(--gold), #b8941f);
+            color: var(--dark);
+            padding: 0.8rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero-cards {
+            position: absolute;
+            right: 3rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            animation: slideInRight 1s ease-out 0.3s both;
+        }
+
+        .hero-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.2rem;
+            padding: 1.2rem;
+            width: 280px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero-card h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--white);
+        }
+
+        .hero-card p {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin: 0;
+        }
+
+        .hero-card-arrow {
+            position: absolute;
+            bottom: 1.2rem;
+            right: 1.2rem;
+            width: 1.8rem;
+            height: 1.8rem;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .hero-card:hover .hero-card-arrow {
+            transform: translate(2px, -2px);
+        }
+
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            padding: 6rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: var(--dark-lighter);
+        }
+
+        .section-content {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Collections Grid */
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .collection-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 2rem;
+            padding: 3rem;
+            transition: all 0.4s ease;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collection-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .collection-card:hover::before {
+            left: 100%;
+        }
+
+        .collection-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(212, 175, 55, 0.2);
+        }
+
+        .collection-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .collection-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .collection-description {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            opacity: 0.9;
+        }
+
+        .feature-icon {
+            color: var(--emerald);
+            margin-right: 0.75rem;
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+
+        /* Process Timeline */
+        .process-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: 4rem;
+            left: 50%;
+            width: 2px;
+            height: 3rem;
+            background: var(--gold);
+            transform: translateX(-50%);
+            opacity: 0.3;
+        }
+
+        .process-step:last-child::before {
+            display: none;
+        }
+
+        .process-icon {
+            width: 5rem;
+            height: 5rem;
+            background: linear-gradient(135deg, var(--gold), #b8941f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .process-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .process-icon i {
+            color: var(--dark);
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .process-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .process-description {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+            text-align: left;
+        }
+
+        .contact-form {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 2rem;
+            padding: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+            color: var(--white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            background: linear-gradient(135deg, var(--gold), #b8941f);
+            color: var(--dark);
+            border: none;
+            border-radius: 1rem;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-icon {
+            color: var(--gold);
+            margin-right: 1rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translate(100px, -50%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(0, -50%);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-center {
+                display: none;
+            }
+
+            .hero {
+                padding: 1.5rem;
+                flex-direction: column;
+                align-items: start;
+                justify-content: end;
+            }
+
+            .hero-cards {
+                position: static;
+                transform: none;
+                width: 100%;
+                margin-top: 3rem;
+            }
+
+            .hero-card {
+                width: 100%;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .collections-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="logo"></div>
+        
+        <div class="nav-center">
+            <a href="#accueil" class="nav-item active">Accueil</a>
+            <a href="#collections" class="nav-item">Collections</a>
+            <a href="#processus" class="nav-item">Processus</a>
+            <a href="#contact" class="nav-item">Contact</a>
+        </div>
+        
+        <button class="menu-button">
+            <i data-lucide="menu" width="18" height="18"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Cultivez ce qui<br>
+                vous semble <span style="color: var(--gold);">juste</span>.
+            </h1>
+            <p class="hero-subtitle">
+                L'avenir, c'est maintenant. Art & Serre transforme vos ambitions végétales en réalités durables.
+            </p>
+            <a href="#contact" class="hero-cta">
+                DISCUTONS
+                <i data-lucide="arrow-right" width="16" height="16"></i>
+            </a>
+        </div>
+
+        <div class="hero-cards">
+            <div class="hero-card">
+                <img src="public/estate-greenhouse.jpg" alt="">
+                <h3>Dernière réalisation</h3>
+                <p>Villa exceptionnelle à Cannes</p>
+                <div class="hero-card-arrow">
+                    <i data-lucide="arrow-up-right" width="14" height="14" style="color: var(--dark);"></i>
+                </div>
+            </div>
+            
+            <div class="hero-card">
+                <img src="public/luxury-greenhouse.jpg" alt="">
+                <h3>Prochain projet</h3>
+                <p>Serre moderne<br>Paris, France</p>
+                <div class="hero-card-arrow">
+                    <i data-lucide="arrow-up-right" width="14" height="14" style="color: var(--dark);"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section id="collections" class="section">
+        <div class="section-content scroll-reveal">
+            <h2 class="section-title">Nos Collections</h2>
+            <p class="section-subtitle">
+                Trois univers d'exception pour transformer votre vision en réalité architecturale végétale
+            </p>
+
+            <div class="collections-grid">
+                <div class="collection-card">
+                    <div class="collection-price">8K€</div>
+                    <h3 class="collection-name">Essential</h3>
+                    <p class="collection-description">
+                        Nos serres d'initiation alliant qualité française et accessibilité pour débuter votre projet végétal.
+                    </p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <i data-lucide="check" class="feature-icon"></i>
+                            Structure aluminium premium
+                        </li>
+                        <li class="feature-item">
+                            <i data-lucide="check" class="feature-icon"></i>
+                            Verre trempé sécurisé
+                        </li>
+                        <li class="feature-item">
+                            <i data-lucide="check" class="feature-icon"></i>
+                            Ventilation automatique
+                        </li>
+                        <li class="feature-item">
+                            <i data-lucide="check" class="feature-icon"></i>
+                            Garantie 10 ans
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="collection-card">
+                    <div class="collection-price">15K€</div>
+                    <h3 class="collection-name">Prestige</h3>
+                    <p class="collection-description">
+                        L'équilibre parfait entre élégance architecturale et fonctionnalité avancée pour les connaisseurs.
+                    </p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <i data-lucide="check" class="feature-icon"></i>
+                            Design architectural sur-mesure
+                        </li>
+                        <li class="feature-item">
+                            <i data-lucide="check" class="feature-icon"></i>
+                            Isolation thermique avancée
+                        </li>
+                        <li class="feature-item">
+                            <i data-lucide="check" class="feature-icon"></i>
+                            Éclairage LED intégré
+                        </li>
+                        <li class="feature-item">
+                            <i data-lucide="check" class="feature-icon"></i>
+                            Système d'arrosage intelligent
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="collection-card">
+                    <div class="collection-price">25K€</div>
+                    <h3 class="collection-name">Signature</h3>
+                    <p class="collection-description">
+                        L'excellence absolue pour les jardins d'exception. Une œuvre d'art végétale unique et personnalisée.
+                    </p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <i data-lucide="check" class="feature-icon"></i>
+                            Conception 100% sur-mesure
+                        </li>
+                        <li class="feature-item">
+                            <i data-lucide="check" class="feature-icon"></i>
+                            Matériaux premium exclusifs
+                        </li>
+                        <li class="feature-item">
+                            <i data-lucide="check" class="feature-icon"></i>
+                            Domotique et contrôle avancé
+                        </li>
+                        <li class="feature-item">
+                            <i data-lucide="check" class="feature-icon"></i>
+                            Service concierge dédié
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="processus" class="section">
+        <div class="section-content scroll-reveal">
+            <h2 class="section-title">Notre Processus</h2>
+            <p class="section-subtitle">
+                Quatre étapes d'excellence pour matérialiser vos rêves végétaux avec précision
+            </p>
+
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i data-lucide="lightbulb"></i>
+                    </div>
+                    <h3 class="process-title">Consultation</h3>
+                    <p class="process-description">
+                        Analyse approfondie de vos besoins, de votre environnement et de vos ambitions végétales.
+                    </p>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i data-lucide="pencil-ruler"></i>
+                    </div>
+                    <h3 class="process-title">Conception 3D</h3>
+                    <p class="process-description">
+                        Modélisation détaillée et rendu photoréaliste de votre projet architectural végétal.
+                    </p>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i data-lucide="hammer"></i>
+                    </div>
+                    <h3 class="process-title">Fabrication</h3>
+                    <p class="process-description">
+                        Réalisation artisanale dans nos ateliers français avec un savoir-faire de trois générations.
+                    </p>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i data-lucide="home"></i>
+                    </div>
+                    <h3 class="process-title">Installation</h3>
+                    <p class="process-description">
+                        Pose professionnelle et mise en service complète de votre nouvel espace végétal.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="section-content scroll-reveal">
+            <h2 class="section-title">Transformons ensemble</h2>
+            <p class="section-subtitle">
+                Votre vision en réalité durable
+            </p>
+
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h3 style="color: var(--gold); margin-bottom: 2rem; font-size: 1.5rem;">Demande de devis</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="Prénom" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="Nom" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-input" placeholder="Téléphone">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Ville">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input form-textarea" placeholder="Décrivez votre projet..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">
+                            Demander un devis gratuit
+                        </button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <h3>Nos coordonnées</h3>
+                    
+                    <div class="contact-item">
+                        <i data-lucide="map-pin" class="contact-icon"></i>
+                        <div>
+                            <strong>Art & Serre</strong><br>
+                            La Crau, Var, France
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i data-lucide="phone" class="contact-icon"></i>
+                        <div>+33 X XX XX XX XX</div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i data-lucide="mail" class="contact-icon"></i>
+                        <div>contact@art-serre.fr</div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i data-lucide="clock" class="contact-icon"></i>
+                        <div>
+                            Architectes de Végétation<br>
+                            <span style="opacity: 0.7;">depuis 1953</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+                
+                // Update active state
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Hero CTA smooth scroll
+        document.querySelector('.hero-cta').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Add loading state
+            const submitBtn = this.querySelector('.form-submit');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Envoi en cours...';
+            submitBtn.disabled = true;
+            
+            // Simulate form submission
+            setTimeout(() => {
+                alert('Merci pour votre demande ! Nous vous contacterons rapidement.');
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+
+        // Enhanced hover effects for cards
+        document.querySelectorAll('.hero-card, .collection-card').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>
